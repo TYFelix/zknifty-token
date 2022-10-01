@@ -3,7 +3,7 @@
     <p><b>zknifty</b>: Zero-knowledge transactions of non-fungible tokens on Ethereum </p>
 </div>
 
-zknifty is an experiment in using an implementation of zero-knowledge merkle tree proofs to facilitate bulk transactions of non-fungible tokens on Ethereum. It was built as a hack at [ETHBerlin](https://ethberlin.com). This work was **strongly** inspired and influenced by https://github.com/barryWhiteHat/roll_up.
+zknifty is an experiment in using an implementation of zero-knowledge merkle tree proofs to facilitate bulk transactions of non-fungible tokens on Ethereum.
 
 # How it works
 Merkle trees can lead to significant data compression for smart contracts, where an entire contract state can be compressed in a single `bytes32` hash on-chain. In this NFT repository, each leaf of the merkle tree represents the ID of a Non-Fungible Token and each leaf also stores the current owner of the corresponding token. This design could allow us to transfer an arbitrary number of tokens with a single transaction updating the root of the merkle tree. However, since the data composing the merkle-tree is stored off-chain, it is difficult for contracts to validate changes to the merkle tree. Here, we utilize the properties of zk-SNARKs to guarantee that the merkle tree was updated according to verify specific rules. These rules are currently as follow :
@@ -17,7 +17,3 @@ The token contract will accept a new merkle root **only if** all the conditions 
 
 
 ---
-
-**Presentation Slides** : 
-https://docs.google.com/presentation/d/1aHfaHy_FPxF0fHw-9EuCTUImhFxwRv63mDTZMPVgdg0/edit?usp=sharing
-
